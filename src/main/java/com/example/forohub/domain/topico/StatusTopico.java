@@ -11,7 +11,7 @@ public enum StatusTopico {
         this.status = text;
     }
 
-    public static StatusTopico fromFront(String text) {
+    public static StatusTopico statusTopico(String text) {
         for (StatusTopico especialidad : StatusTopico.values()) {
             if (especialidad.status.equalsIgnoreCase(text)) {
                 return especialidad;

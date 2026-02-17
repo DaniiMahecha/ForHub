@@ -3,22 +3,24 @@ package com.example.forohub.domain.curso;
 import com.example.forohub.domain.topico.StatusTopico;
 
 public enum Categoria {
-//    CREADO("creado"),
-//    CERRADO("cerrado"),
-//    RESUELTO("resuelto");
-//
-//    private String status;
-//
-//    StatusTopico(String text) {
-//        this.status = text;
-//    }
-//
-//    public static StatusTopico fromFront(String text) {
-//        for (StatusTopico especialidad : StatusTopico.values()) {
-//            if (especialidad.status.equalsIgnoreCase(text)) {
-//                return especialidad;
-//            }
-//        }
-//        throw new IllegalArgumentException("Status no existente: " + text);
-//    }
+    BACKEND("backend"),
+    FRONTEND("frontend"),
+    CLAUD("claud");
+
+    private String categoria;
+
+    Categoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public static Categoria categoria(String text) {
+        for (Categoria especialidad : Categoria.values()) {
+            if (especialidad.categoria.equalsIgnoreCase(text)) {
+                return especialidad;
+            }
+        }
+        throw new IllegalArgumentException("Status no existente: " + text);
+    }
+
+
 }
