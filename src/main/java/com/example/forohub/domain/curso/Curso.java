@@ -1,10 +1,13 @@
 package com.example.forohub.domain.curso;
 
+import com.example.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Table(name = "cursos")
 @Entity(name = "Curso")
@@ -23,4 +26,9 @@ public class Curso {
 
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
+
+    @OneToOne(mappedBy = "curso",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Topico> topico;
+
+    private Boolean activo;
 }
