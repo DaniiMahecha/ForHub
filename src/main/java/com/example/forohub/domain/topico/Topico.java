@@ -28,23 +28,20 @@ public class Topico {
     private String titulo;
     private String mensaje;
     private LocalDateTime fechaCreacion;
+    private Boolean activo;
 
     @Enumerated(EnumType.STRING)
     private StatusTopico status;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "autor_id")
+    @ManyToOne
+    @JoinColumn(name = "autor_id") //Foreign Key
     private Usuario autor;
 
-    private Boolean activo;
-
-    @ManyToOne(fetch =  FetchType.LAZY)
-    @JoinColumn(name = "curso_id")
+    @ManyToOne
+    @JoinColumn(name = "curso_id") //Foreign Key
     private Curso curso;
 
-    @OneToMany(mappedBy ="topico", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy ="topico", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Respuesta> respuestas;
-
-
 
 }

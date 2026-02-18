@@ -24,17 +24,18 @@ public class Respuesta {
 
     private String mensaje;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne //Foreign Key
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne //Foreign Key
     @JoinColumn(name = "autor_id")
     private Usuario autor;
 
+    @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-    private String Solución;
+    private String solucion;
 
     private Boolean activo;
 

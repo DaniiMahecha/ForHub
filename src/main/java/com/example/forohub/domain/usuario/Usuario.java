@@ -1,10 +1,12 @@
 package com.example.forohub.domain.usuario;
 
+import com.example.forohub.domain.perfil.Perfil;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
@@ -21,7 +23,4 @@ public class Usuario {
     private String nombre;
     private String correoElectronico;
     private String contrasena;
-
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    private List<Perfil> perfiles;
 }

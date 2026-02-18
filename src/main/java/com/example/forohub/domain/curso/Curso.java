@@ -27,7 +27,7 @@ public class Curso {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
-    @OneToOne(mappedBy = "curso",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "curso",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Topico> topico;
 
     private Boolean activo;
