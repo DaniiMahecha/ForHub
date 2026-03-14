@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
@@ -23,4 +23,9 @@ public class Usuario {
     private String nombre;
     private String correoElectronico;
     private String contrasena;
+
+    public Usuario(UsuarioData json) {
+        this.nombre = json.nombre();
+    }
+
 }
