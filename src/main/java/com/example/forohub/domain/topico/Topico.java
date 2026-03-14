@@ -4,18 +4,18 @@ import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.curso.Curso;
 import com.example.forohub.domain.respuesta.Respuesta;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Table(name = "topicos")
+@Table(
+        name = "topicos" ,
+        uniqueConstraints = @UniqueConstraint(columnNames = {"titulo", "mensaje"})
+        )
 @Entity(name = "Topico")
 
-@Getter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -33,15 +33,24 @@ public class Topico {
     @Enumerated(EnumType.STRING)
     private StatusTopico status;
 
-    @ManyToOne
-    @JoinColumn(name = "autor_id") //Foreign Key
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "autor_id", nullable = false) //Foreign Key
     private Usuario autor;
 
-    @ManyToOne
-    @JoinColumn(name = "curso_id") //Foreign Key
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "curso_id", nullable = false) //Foreign Key
     private Curso curso;
 
     @OneToMany(mappedBy ="topico", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Respuesta> respuestas;
+
+    public Topico(TopicoData data, Usuario autor, Curso curso) {
+        this.titulo = data.titulo();
+        this.mensaje = data.mensaje();
+        this.fechaCreacion = LocalDateTime.now();
+        this.status = StatusTopico.CREADO;
+        this.autor = autor;
+        this.curso = curso;
+    }
 
 }
