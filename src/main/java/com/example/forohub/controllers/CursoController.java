@@ -1,4 +1,4 @@
-package com.example.forohub.Controllers;
+package com.example.forohub.controllers;
 
 import com.example.forohub.domain.curso.CursoData;
 import com.example.forohub.domain.curso.CursoService;
