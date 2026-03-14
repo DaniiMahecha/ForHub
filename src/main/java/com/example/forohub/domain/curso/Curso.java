@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Table(name = "cursos")
+@Table(
+        name = "cursos",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"nombre"})
+)
 @Entity(name = "Curso")
 
 @Getter
@@ -31,4 +34,11 @@ public class Curso {
     private List<Topico> topico;
 
     private Boolean activo;
+
+    public Curso(CursoData json) {
+        this.id = null;
+        this.nombre = json.nombre();
+        this.categoria = Categoria.categoria(json.categoria());
+        this.activo = true;
+    }
 }
