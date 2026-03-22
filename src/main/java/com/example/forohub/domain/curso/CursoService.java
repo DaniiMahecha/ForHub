@@ -1,6 +1,6 @@
 package com.example.forohub.domain.curso;
 
-import com.example.forohub.domain.curso.dto_curso.CursoDTO;
+import com.example.forohub.domain.curso.dto_curso.CursoData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,8 +15,7 @@ public class CursoService {
 
     public Curso save(CursoData json){
         var curso = new Curso(json);
-        repository.save(curso);
-        return curso;
+        return  repository.save(curso);
     }
 
 }

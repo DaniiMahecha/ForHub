@@ -1,4 +1,4 @@
-package com.example.forohub.domain.usuario;
+package com.example.forohub.domain.usuario.dto_usuario;
 
 import jakarta.validation.constraints.NotBlank;
 

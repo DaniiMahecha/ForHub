@@ -1,8 +1,9 @@
 package com.example.forohub.controllers;
 
-import com.example.forohub.domain.curso.CursoData;
+import com.example.forohub.domain.curso.dto_curso.CursoData;
 import com.example.forohub.domain.curso.CursoService;
 import com.example.forohub.domain.curso.dto_curso.CursoDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class CursoController {
     private CursoService service;
 
     @PostMapping
-    public ResponseEntity<CursoDTO> createTopico(@RequestBody CursoData json, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<CursoDTO> createCurso(@RequestBody @Valid CursoData json, UriComponentsBuilder ucBuilder) {
         var curso = service.save(json);
         var uri = ucBuilder
                 .path("/cursos/{id}")

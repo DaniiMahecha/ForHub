@@ -5,7 +5,7 @@ import com.example.forohub.domain.topico.StatusTopico;
 public enum Categoria {
     BACKEND("backend"),
     FRONTEND("frontend"),
-    CLAUD("claud");
+    CLOUD("cloud");
 
     private String categoria;
 

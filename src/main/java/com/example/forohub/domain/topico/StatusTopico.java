@@ -3,7 +3,9 @@ package com.example.forohub.domain.topico;
 public enum StatusTopico {
     CREADO("creado"),
     CERRADO("cerrado"),
-    RESUELTO("resuelto");
+    RESUELTO("resuelto"),
+    SIN_RESOLVER("sin resolver"),
+    SPAM("spam");
 
     private String status;
 

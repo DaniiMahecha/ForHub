@@ -3,17 +3,14 @@ package com.example.forohub.domain.respuesta;
 import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Table(name = "respuestas")
 @Entity(name = "Respuesta")
 
-@Getter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")

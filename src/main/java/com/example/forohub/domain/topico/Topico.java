@@ -1,5 +1,7 @@
 package com.example.forohub.domain.topico;
 
+import com.example.forohub.domain.topico.dto_topico.TopicoData;
+import com.example.forohub.domain.topico.dto_topico.TopicoModificado;
 import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.curso.Curso;
 import com.example.forohub.domain.respuesta.Respuesta;
@@ -7,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(
@@ -42,15 +45,21 @@ public class Topico {
     private Curso curso;
 
     @OneToMany(mappedBy ="topico", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Respuesta> respuestas;
+    private List<Respuesta> respuestas = new ArrayList<>();
 
     public Topico(TopicoData data, Usuario autor, Curso curso) {
         this.titulo = data.titulo();
         this.mensaje = data.mensaje();
         this.fechaCreacion = LocalDateTime.now();
+        this.activo = true;
         this.status = StatusTopico.CREADO;
         this.autor = autor;
         this.curso = curso;
     }
 
+    /*Método de dominio para manejar la relación*/
+    public void addRespuesta(Respuesta respuesta) {
+        respuestas.add(respuesta);
+        respuesta.setTopico(this);
+    }
 }

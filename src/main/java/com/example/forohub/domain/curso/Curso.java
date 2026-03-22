@@ -1,5 +1,6 @@
 package com.example.forohub.domain.curso;
 
+import com.example.forohub.domain.curso.dto_curso.CursoData;
 import com.example.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
