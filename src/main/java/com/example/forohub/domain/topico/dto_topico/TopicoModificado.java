@@ -8,6 +8,7 @@ No tengo que validar absolutamente nada, dado que modificar un topico, no implic
 */
 public record TopicoModificado(
     String titulo,
-    String mensaje
+    String mensaje,
+    String status
 ) {
 }
