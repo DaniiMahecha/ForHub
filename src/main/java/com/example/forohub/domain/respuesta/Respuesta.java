@@ -1,5 +1,6 @@
 package com.example.forohub.domain.respuesta;
 
+import com.example.forohub.domain.respuesta.dto_respuesta.RespuestaData;
 import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
@@ -32,8 +33,16 @@ public class Respuesta {
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
-    private String solucion;
 
     private Boolean activo;
 
+
+    public Respuesta(RespuestaData json, Topico topico, Usuario autor) {
+        this.mensaje = json.mensaje();
+        this.activo = true;
+        this.fechaCreacion = LocalDateTime.now();
+        this.topico = topico;
+        this.autor = autor;
+
+    }
 }

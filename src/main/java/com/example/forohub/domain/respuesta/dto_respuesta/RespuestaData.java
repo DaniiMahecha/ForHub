@@ -9,8 +9,6 @@ import jakarta.validation.constraints.NotNull;
 public record RespuestaData(
         @NotBlank
         String mensaje,
-        @NotBlank
-        String solucion,
         @NotNull @Valid
         TopicoData topico,
         @NotNull @Valid
