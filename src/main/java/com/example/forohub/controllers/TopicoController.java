@@ -3,6 +3,7 @@ package com.example.forohub.controllers;
 import com.example.forohub.domain.topico.dto_topico.TopicoData;
 import com.example.forohub.domain.topico.TopicoService;
 import com.example.forohub.domain.topico.dto_topico.TopicoDTO;
+import com.example.forohub.domain.topico.dto_topico.TopicoDetallado;
 import com.example.forohub.domain.topico.dto_topico.TopicoModificado;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,19 +54,32 @@ public class TopicoController {
     }
 
     @GetMapping("/{idTopico}")
-    public ResponseEntity<Page<TopicoDTO>> listTopicoIdYActivo(@PathVariable Long idTopico,
-            @PageableDefault(size = 10, sort={"fechaCreacion"}, direction = Sort.Direction.ASC) Pageable pageable) {
+    public ResponseEntity<TopicoDetallado> listTopicoIdYActivo(@PathVariable Long idTopico) {
 
-        var page = topicoService.listTopicoCourseId( idTopico, pageable);
-        return ResponseEntity.ok(page);
+        var topicoDetallado = topicoService.listTopicoId( idTopico);
+        return ResponseEntity.ok(topicoDetallado);
 
     }
 
+    /*
+    El método PUT, permite modificar un tópico ya existente, indicando en el endpoint el id del tópico a modificar y
+    en el body la información a cambiar.
+
+    Del Tópico solo se puede módificar el TITULO, MENSAJE y STATUS
+    */
     @PutMapping("/{idTopico}")
     public ResponseEntity<TopicoDTO> modifyTopico(@PathVariable Long idTopico, @RequestBody TopicoModificado json) {
         var topicoModificado = topicoService.modifyTopico(idTopico, json);
         return ResponseEntity.ok(topicoModificado);
     }
+
+    /*Método DELETE, no elimina la instancia de tópico de la base de datos, hace un DELETE lógico.*/
+    @DeleteMapping("/{idTopico}")
+    public ResponseEntity<Void> deleteTopico(@PathVariable Long idTopico) {
+        topicoService.deleteTopico(idTopico);
+        return ResponseEntity.noContent().build();
+    }
+
 
 
 }
