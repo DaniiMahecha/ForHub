@@ -62,4 +62,8 @@ public class Topico {
         respuestas.add(respuesta);
         respuesta.setTopico(this);
     }
+
+    public void deleteTopico() {
+        this.activo = false;
+    }
 }
