@@ -5,5 +5,4 @@ import jakarta.validation.constraints.NotBlank;
 public record UsuarioData(
         @NotBlank
         String nombre
-) {
-}
+) {}

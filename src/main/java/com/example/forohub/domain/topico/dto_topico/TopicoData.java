@@ -16,6 +16,4 @@ public record TopicoData(
         UsuarioData autor,
         @NotNull @Valid
         CursoData curso
-
-) {
-}
+) {}

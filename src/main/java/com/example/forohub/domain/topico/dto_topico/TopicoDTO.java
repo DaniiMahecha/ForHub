@@ -1,10 +1,8 @@
 package com.example.forohub.domain.topico.dto_topico;
 
-import com.example.forohub.domain.curso.Curso;
 import com.example.forohub.domain.curso.dto_curso.CursoDTO;
 import com.example.forohub.domain.topico.StatusTopico;
 import com.example.forohub.domain.topico.Topico;
-import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.usuario.dto_usuario.UsuarioDTO;
 
 import java.time.LocalDateTime;
