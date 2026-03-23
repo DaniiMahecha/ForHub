@@ -7,7 +7,6 @@ import com.example.forohub.domain.topico.dto_topico.TopicoData;
 import com.example.forohub.domain.topico.dto_topico.TopicoModificado;
 import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.usuario.UsuarioRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
