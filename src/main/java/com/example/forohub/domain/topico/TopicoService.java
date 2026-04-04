@@ -31,11 +31,11 @@ public class TopicoService {
 
         Usuario autor = usuarioRepository
                 .findByNombre(json.autor().nombre())
-                .orElseThrow(() -> new ValidationException("Usuario no encontrado"));
+                .orElseThrow(() -> new ValidationException("No existe un autor registrado con el nombre informado: " + json.autor().nombre()));
 
         Curso curso = cursoRepository
                 .findByNombre(json.curso().nombre())
-                .orElseThrow(() -> new ValidationException("Curso no encontrado"));
+                .orElseThrow(() -> new ValidationException("No existe una curso con el nombre informado: " +  json.curso().nombre()));
 
         var topico = new Topico(json, autor, curso);
 
@@ -49,7 +49,7 @@ public class TopicoService {
     //GET
     public TopicoDetallado listTopicoId(Long id) {
         Topico topico = repository.findByIdAndActivoTrue(id)
-                .orElseThrow(() -> new RuntimeException("Tópico no encontrado"));
+                .orElseThrow(() -> new ValidationException("No existe un Tópico registrado con el id: " + id));
 
         return new TopicoDetallado(topico);
     }
@@ -57,7 +57,7 @@ public class TopicoService {
     @Transactional //PUT
     public TopicoDTO modifyTopico(Long idTopico, TopicoModificado json) {
         Topico topico = repository.findByIdAndActivoTrue(idTopico)
-                .orElseThrow(() -> new RuntimeException("Topico no encontrado"));
+                .orElseThrow(() -> new ValidationException("No existe un Tópico registrado con el id: " + idTopico));
 
         if (json.titulo() != null) {topico.setTitulo(json.titulo());}
 
@@ -72,7 +72,7 @@ public class TopicoService {
     @Transactional //DELETE
     public void deleteTopico(Long idTopico) {
         Topico topico = repository.findByIdAndActivoTrue(idTopico)
-                .orElseThrow(() -> new RuntimeException("Topico no encontrado"));
+                .orElseThrow(() -> new ValidationException("No existe un Tópico registrado con el id: " + idTopico));
 
         topico.deleteTopico();
     }
