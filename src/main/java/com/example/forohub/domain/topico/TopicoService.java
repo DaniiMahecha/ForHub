@@ -8,6 +8,7 @@ import com.example.forohub.domain.topico.dto_topico.TopicoDetallado;
 import com.example.forohub.domain.topico.dto_topico.TopicoModificado;
 import com.example.forohub.domain.usuario.Usuario;
 import com.example.forohub.domain.usuario.UsuarioRepository;
+import jakarta.validation.ValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,11 +31,11 @@ public class TopicoService {
 
         Usuario autor = usuarioRepository
                 .findByNombre(json.autor().nombre())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                .orElseThrow(() -> new ValidationException("Usuario no encontrado"));
 
         Curso curso = cursoRepository
                 .findByNombre(json.curso().nombre())
-                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
+                .orElseThrow(() -> new ValidationException("Curso no encontrado"));
 
         var topico = new Topico(json, autor, curso);
 

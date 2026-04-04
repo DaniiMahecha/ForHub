@@ -2,7 +2,7 @@ package com.example.forohub.controllers;
 
 import com.example.forohub.domain.respuesta.dto_respuesta.RespuestaDTO;
 import com.example.forohub.domain.respuesta.dto_respuesta.RespuestaData;
-import com.example.forohub.domain.respuesta.dto_respuesta.RespuestaService;
+import com.example.forohub.domain.respuesta.RespuestaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
