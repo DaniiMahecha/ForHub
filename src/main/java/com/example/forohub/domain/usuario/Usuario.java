@@ -1,11 +1,14 @@
 package com.example.forohub.domain.usuario;
 
+import com.example.forohub.domain.perfil.Perfil;
 import com.example.forohub.domain.usuario.dto_usuario.UsuarioData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Table(
@@ -29,6 +32,8 @@ public class Usuario {
     private String correoElectronico;
     private String contrasena;
 
+    @ManyToMany(mappedBy = "usuarios")
+    private List<Perfil> perfiles;
     public Usuario(UsuarioData json) {
         this.nombre = json.nombre();
     }

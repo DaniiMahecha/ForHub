@@ -23,7 +23,7 @@ public class Perfil {
 
     private String nombre;
 
-    @ManyToMany(targetEntity = Usuario.class ,fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
     @JoinTable(
             name = "perfiles_usuarios", //Nombre de la tabla
             joinColumns = @JoinColumn(name = "perfil"), //Nombre perfil
