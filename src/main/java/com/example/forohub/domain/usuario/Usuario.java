@@ -3,10 +3,7 @@ package com.example.forohub.domain.usuario;
 import com.example.forohub.domain.perfil.Perfil;
 import com.example.forohub.domain.usuario.dto_usuario.UsuarioData;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ import java.util.List;
 )
 @Entity(name = "Usuario")
 
-@Getter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -27,6 +24,7 @@ public class Usuario {
     private Long id;
 
     private String nombre;
+    private Boolean activo;
 
     @Column(name = "correo_electronico")
     private String correoElectronico;
@@ -34,8 +32,12 @@ public class Usuario {
 
     @ManyToMany(mappedBy = "usuarios")
     private List<Perfil> perfiles;
-    public Usuario(UsuarioData json) {
-        this.nombre = json.nombre();
-    }
 
+    public Usuario(UsuarioData json) {
+        this.id = null;
+        this.nombre = json.nombre();
+        this.contrasena = json.password();
+        this.correoElectronico = json.correo();
+        this.activo = true;
+    }
 }

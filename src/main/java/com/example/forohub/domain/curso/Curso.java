@@ -3,10 +3,7 @@ package com.example.forohub.domain.curso;
 import com.example.forohub.domain.curso.dto_curso.CursoData;
 import com.example.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ import java.util.List;
 )
 @Entity(name = "Curso")
 
-@Getter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
